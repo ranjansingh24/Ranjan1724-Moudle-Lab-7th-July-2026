@@ -4,7 +4,7 @@ resource "azurerm_virtual_machine" "vm-chapra" {
   location              = each.value.location
   resource_group_name   = each.value.group
   network_interface_ids = each.value.network_interface_ids
-  vm_size               = "Standard_DS1_v2"
+  vm_size               = "Standard_D2s_v3"
 
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM

@@ -101,7 +101,7 @@ p-nsg = {
       source_port_range          = "*"
       destination_port_range     = "22"
       source_address_prefix      = "*"
-      destination_address_prefix = "* "
+      destination_address_prefix = "*"
     }
 
   }
@@ -115,21 +115,21 @@ p-vm = {
     nic_key  = "nicnetfliex1"
     subnet   = "subnet-pool-netflix"
   }
-   vm2 = {
+  vm2 = {
     name     = "netflixvm2"
     location = "Japan East"
     group    = "rg-ranjan-dev"
     nic_key  = "nicnetfliex2"
     subnet   = "subnet-pool-netflix"
   }
-   vm3 = {
+  vm3 = {
     name     = "starbucks1"
     location = "Japan East"
     group    = "rg-ranjan-dev"
     nic_key  = "nicstarbucks1"
     subnet   = "subnet-pool-starbugs"
   }
-   vm3 = {
+  vm4 = {
     name     = "netflixvm2"
     location = "Japan East"
     group    = "rg-ranjan-dev"
