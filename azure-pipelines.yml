@@ -1,3 +1,4 @@
+
 trigger: none
 
 pool:
@@ -5,19 +6,25 @@ pool:
 
 steps:
 
-# Terraform Install
+# =========================================================
+# 1. Install Terraform
+# =========================================================
 - task: TerraformInstaller@1
   displayName: 'Install Terraform'
   inputs:
     terraformVersion: 'latest'
 
 
-# Terraform Init
+# =========================================================
+# 2. Terraform Init
+# =========================================================
 - task: TerraformTask@5
   displayName: 'Terraform Init'
   inputs:
     provider: 'azurerm'
     command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Parent-Moudle'
+
     backendServiceArm: 'Ranjan_Service_Connection'
     backendAzureRmOverrideSubscriptionID: 'cf4adfd0-252d-4813-b002-f6f2095a23a8'
     backendAzureRmResourceGroupName: 'Ranjan_24'
@@ -26,30 +33,43 @@ steps:
     backendAzureRmKey: 'ranjan.tfstate'
 
 
-# Terraform Validate
+# =========================================================
+# 3. Terraform Validate
+# =========================================================
 - task: TerraformTask@5
   displayName: 'Terraform Validate'
   inputs:
     provider: 'azurerm'
     command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Parent-Moudle'
 
 
-# Terraform Plan
+# =========================================================
+# 4. Terraform Plan
+# =========================================================
 - task: TerraformTask@5
   displayName: 'Terraform Plan'
   inputs:
     provider: 'azurerm'
     command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Parent-Moudle'
+
     environmentServiceNameAzureRM: 'Ranjan_Service_Connection'
     environmentAzureRmOverrideSubscriptionID: 'cf4adfd0-252d-4813-b002-f6f2095a23a8'
 
 
-# Terraform Apply
+# =========================================================
+# 5. Terraform Apply
+# =========================================================
 - task: TerraformTask@5
   displayName: 'Terraform Apply'
   inputs:
     provider: 'azurerm'
     command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Parent-Moudle'
+
     commandOptions: '-auto-approve'
+
     environmentServiceNameAzureRM: 'Ranjan_Service_Connection'
     environmentAzureRmOverrideSubscriptionID: 'cf4adfd0-252d-4813-b002-f6f2095a23a8'
+
