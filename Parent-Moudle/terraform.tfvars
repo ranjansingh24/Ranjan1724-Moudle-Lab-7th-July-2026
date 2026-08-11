@@ -1,13 +1,13 @@
 p-rgs = {
   rg1 = {
-
-    name = "rg-ranjan-dev"
-  location = "Japan East" }
+    name     = "rg-ranjan-dev"
+    location = "East US"
+  }
 }
 p-vnet = {
   vnet1 = {
     name          = "vnet-dev"
-    location      = "japaneast"
+    location      = "eastus"
     group         = "rg-ranjan-dev"
     address_space = ["10.0.0.0/16"]
   }
@@ -35,7 +35,7 @@ p-sbn = {
 p-pip = {
   pip1 = {
     name     = "pipforbastion"
-    location = "Japan East"
+    location = "East US"
     group    = "rg-ranjan-dev"
     method   = "static"
   }
@@ -44,7 +44,7 @@ p-pip = {
 p-bas = {
   bastion = {
     name       = "bastionforchapra"
-    location   = "Japan East"
+    location   = "East US"
     group      = "rg-ranjan-dev"
     ipname     = "ip-config-for-bastion"
     subnetname = "subnet3"
@@ -55,7 +55,7 @@ p-bas = {
 p-nic = {
   nicnetfliex1 = {
     name      = "nic-netflix1"
-    location  = "Japan East"
+    location  = "East US"
     group     = "rg-ranjan-dev"
     ipcname   = "ip-config-netflix1"
     add-alloc = "Dynamic"
@@ -63,7 +63,7 @@ p-nic = {
   }
   nicnetfliex2 = {
     name      = "nic-netflix2"
-    location  = "Japan East"
+    location  = "East US"
     group     = "rg-ranjan-dev"
     ipcname   = "ip-config-netflix1"
     add-alloc = "Dynamic"
@@ -71,7 +71,7 @@ p-nic = {
   }
   nicstarbucks1 = {
     name      = "nic-starbucks1"
-    location  = "Japan East"
+    location  = "East US"
     group     = "rg-ranjan-dev"
     ipcname   = "ip-config-netflix1"
     add-alloc = "Dynamic"
@@ -79,7 +79,7 @@ p-nic = {
   }
   nicstarbucks2 = {
     name      = "nic-starbucks2"
-    location  = "Japan East"
+    location  = "East US"
     group     = "rg-ranjan-dev"
     ipcname   = "ip-config-netflix1"
     add-alloc = "Dynamic"
@@ -90,7 +90,7 @@ p-nic = {
 p-nsg = {
   vm-nsg1 = {
     name     = "ranjannsg-1"
-    location = "Japan East"
+    location = "East US"
     group    = "rg-ranjan-dev"
     inbound = {
       name                       = "Allow-SSH"
@@ -103,42 +103,40 @@ p-nsg = {
       source_address_prefix      = "*"
       destination_address_prefix = "*"
     }
-
   }
 }
 
 p-vm = {
   vm1 = {
     name     = "netflixvm1"
-    location = "Japan East"
+    location = "East US"
     group    = "rg-ranjan-dev"
     nic_key  = "nicnetfliex1"
     subnet   = "subnet-pool-netflix"
-    size     = "Standard_B2s"
+    size     = "Standard_B1s"
   }
   vm2 = {
     name     = "netflixvm2"
-    location = "Japan East"
+    location = "East US"
     group    = "rg-ranjan-dev"
     nic_key  = "nicnetfliex2"
     subnet   = "subnet-pool-netflix"
-    size     = "Standard_B2s"
+    size     = "Standard_B1s"
   }
   vm3 = {
     name     = "starbucks1"
-    location = "Japan East"
+    location = "East US"
     group    = "rg-ranjan-dev"
     nic_key  = "nicstarbucks1"
     subnet   = "subnet-pool-starbugs"
-    size     = "Standard_B2s"
+    size     = "Standard_B1s"
   }
   vm4 = {
     name     = "starbucks2"
-    location = "Japan East"
+    location = "East US"
     group    = "rg-ranjan-dev"
     nic_key  = "nicstarbucks2"
     subnet   = "subnet-pool-starbugs"
-    size     = "Standard_B2s"
+    size     = "Standard_B1s"
   }
 }
-
