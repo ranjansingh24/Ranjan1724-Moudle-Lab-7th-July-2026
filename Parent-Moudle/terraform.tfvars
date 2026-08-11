@@ -114,6 +114,7 @@ p-vm = {
     group    = "rg-ranjan-dev"
     nic_key  = "nicnetfliex1"
     subnet   = "subnet-pool-netflix"
+    size     = "Standard_B2s"
   }
   vm2 = {
     name     = "netflixvm2"
@@ -121,6 +122,7 @@ p-vm = {
     group    = "rg-ranjan-dev"
     nic_key  = "nicnetfliex2"
     subnet   = "subnet-pool-netflix"
+    size     = "Standard_B2s"
   }
   vm3 = {
     name     = "starbucks1"
@@ -128,12 +130,15 @@ p-vm = {
     group    = "rg-ranjan-dev"
     nic_key  = "nicstarbucks1"
     subnet   = "subnet-pool-starbugs"
+    size     = "Standard_B2s"
   }
   vm4 = {
-    name     = "netflixvm2"
+    name     = "starbucks2"
     location = "Japan East"
     group    = "rg-ranjan-dev"
     nic_key  = "nicstarbucks2"
     subnet   = "subnet-pool-starbugs"
+    size     = "Standard_B2s"
   }
 }
+
