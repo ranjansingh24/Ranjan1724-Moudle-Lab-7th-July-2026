@@ -23,6 +23,7 @@ steps:
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
+      $ErrorActionPreference = 'Stop'
       cd "$(System.DefaultWorkingDirectory)/Parent-Moudle"
       
       $env:ARM_SUBSCRIPTION_ID = "cf4adfd0-252d-4813-b002-f6f2095a23a8"
@@ -31,13 +32,16 @@ steps:
       $env:ARM_ACCESS_KEY      = $key
 
       Write-Host "##[section]1. Running Terraform Init"
-      terraform init -input=false
+      terraform init -input=false -reconfigure -upgrade
+      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       Write-Host "##[section]2. Running Terraform Validate"
       terraform validate
+      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       Write-Host "##[section]3. Running Terraform Plan"
       terraform plan -input=false
+      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 # =========================================================
 # 3. Terraform Apply
@@ -49,6 +53,7 @@ steps:
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
+      $ErrorActionPreference = 'Stop'
       cd "$(System.DefaultWorkingDirectory)/Parent-Moudle"
       
       $env:ARM_SUBSCRIPTION_ID = "cf4adfd0-252d-4813-b002-f6f2095a23a8"
@@ -58,3 +63,5 @@ steps:
 
       Write-Host "##[section]4. Running Terraform Apply"
       terraform apply -auto-approve -input=false
+      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
