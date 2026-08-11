@@ -1,14 +1,55 @@
-trigger: non
-
+trigger: none
 
 pool:
-  name: : Ranjan_pool 
+  name: Ranjan_pool
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+# Terraform Install
+- task: TerraformInstaller@1
+  displayName: 'Install Terraform'
+  inputs:
+    terraformVersion: 'latest'
+
+
+# Terraform Init
+- task: TerraformTask@5
+  displayName: 'Terraform Init'
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Ranjan_Service_Connection'
+    backendAzureRmOverrideSubscriptionID: 'cf4adfd0-252d-4813-b002-f6f2095a23a8'
+    backendAzureRmResourceGroupName: 'Ranjan_24'
+    backendAzureRmStorageAccountName: 'ranjansingh24'
+    backendAzureRmContainerName: 'ranjancontainer'
+    backendAzureRmKey: 'ranjan.tfstate'
+
+
+# Terraform Validate
+- task: TerraformTask@5
+  displayName: 'Terraform Validate'
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+
+
+# Terraform Plan
+- task: TerraformTask@5
+  displayName: 'Terraform Plan'
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'Ranjan_Service_Connection'
+    environmentAzureRmOverrideSubscriptionID: 'cf4adfd0-252d-4813-b002-f6f2095a23a8'
+
+
+# Terraform Apply
+- task: TerraformTask@5
+  displayName: 'Terraform Apply'
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    commandOptions: '-auto-approve'
+    environmentServiceNameAzureRM: 'Ranjan_Service_Connection'
+    environmentAzureRmOverrideSubscriptionID: 'cf4adfd0-252d-4813-b002-f6f2095a23a8'
