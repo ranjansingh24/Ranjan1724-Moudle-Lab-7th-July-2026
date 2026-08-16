@@ -113,7 +113,7 @@ p-vm = {
     group    = "rg-ranjan-dev-us"
     nic_key  = "nicnetfliex1"
     subnet   = "subnet-pool-netflix"
-    size     = "Standard_B2s"
+    size     = "Standard_D2s_v3"
   }
 }
 

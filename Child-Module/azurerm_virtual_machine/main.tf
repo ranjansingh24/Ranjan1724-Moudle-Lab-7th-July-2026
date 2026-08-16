@@ -4,7 +4,7 @@ resource "azurerm_virtual_machine" "netflixvm1" {
   location              = each.value.location
   resource_group_name   = each.value.group
   network_interface_ids = each.value.network_interface_ids
-  vm_size               = lookup(each.value, "size", "Standard_B2s")
+  vm_size               = lookup(each.value, "size", "Standard_D2s_v3")
 
   storage_image_reference {
     publisher = "Canonical"
