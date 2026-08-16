@@ -48,30 +48,4 @@ steps:
       terraform plan -input=false
       if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-# =========================================================
-# 3. Terraform Apply
-# =========================================================
-- task: AzureCLI@2
-  displayName: 'Terraform Apply'
-  inputs:
-    azureSubscription: 'Ranjan_Service_Connection'
-    addSpnToEnvironment: true
-    scriptType: 'ps'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      $ErrorActionPreference = 'Stop'
-      Set-Location "$(System.DefaultWorkingDirectory)/Parent-Moudle"
-      
-      $env:ARM_SUBSCRIPTION_ID = "cf4adfd0-252d-4813-b002-f6f2095a23a8"
-      $env:ARM_TENANT_ID       = $env:tenantId
-      $env:ARM_CLIENT_ID       = $env:servicePrincipalId
-      $env:ARM_CLIENT_SECRET   = $env:servicePrincipalKey
-
-      $key = (az storage account keys list --account-name ranjansingh24 --resource-group Ranjan_24 --query "[0].value" -o tsv)
-      $env:ARM_ACCESS_KEY      = $key
-
-      Write-Host "##[section]4. Running Terraform Apply"
-      terraform apply -auto-approve -input=false
-      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-
 
