@@ -44,19 +44,19 @@ module "nic-creation" {
 }
 
 
-module "vm-creation" {
+# module "vm-creation" {
 
-  depends_on = [module.nic-creation]
+#   depends_on = [module.nic-creation]
 
-  source = "../Child-Module/azurerm_virtual_machine"
+#   source = "../Child-Module/azurerm_virtual_machine"
 
-  c-vm = {
-    for k, v in var.p-vm :
-    k => merge(v, {
-      network_interface_ids = [
-        module.nic-creation.nic_ids[v.nic_key]
-      ]
-    })
-  }
-}
+#   c-vm = {
+#     for k, v in var.p-vm :
+#     k => merge(v, {
+#       network_interface_ids = [
+#         module.nic-creation.nic_ids[v.nic_key]
+#       ]
+#     })
+#   }
+# }
 
