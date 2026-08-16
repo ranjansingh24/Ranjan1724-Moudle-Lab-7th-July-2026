@@ -106,14 +106,14 @@ p-nsg = {
   }
 }
 
-p-vm = {
-  vm1 = {
-    name     = "netflixvm1"
-    location = "East US 2"
-    group    = "rg-ranjan-dev-us"
-    nic_key  = "nicnetfliex1"
-    subnet   = "subnet-pool-netflix"
-    size     = "Standard_D2s_v3"
-  }
-}
+# p-vm = {
+#   vm1 = {
+#     name     = "netflixvm1"
+#     location = "East US 2"
+#     group    = "rg-ranjan-dev-us"
+#     nic_key  = "nicnetfliex1"
+#     subnet   = "subnet-pool-netflix"
+#     size     = "Standard_D2s_v3"
+#   }
+# }
 
