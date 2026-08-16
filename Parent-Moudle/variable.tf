@@ -5,4 +5,4 @@ variable "p-pip" {}
 variable "p-bas" {}
 variable "p-nsg" {}
 variable "p-nic" {}
-variable "p-vm" {}
+variable "p-vm" { default = {} }
