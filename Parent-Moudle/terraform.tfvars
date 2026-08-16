@@ -3,6 +3,10 @@ p-rgs = {
     name     = "rg-ranjan-dev-us"
     location = "East US 2"
   }
+  rg2 = {
+    name     = "rg-ranjan-prod-us"
+    location = "East US 2"
+  }
 }
 p-vnet = {
   vnet1 = {
