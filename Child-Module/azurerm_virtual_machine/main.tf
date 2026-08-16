@@ -1,10 +1,10 @@
-resource "azurerm_virtual_machine" "vm-chapra" {
+resource "azurerm_virtual_machine" "netflixvm1" {
   for_each              = var.c-vm
   name                  = each.value.name
   location              = each.value.location
   resource_group_name   = each.value.group
   network_interface_ids = each.value.network_interface_ids
-  vm_size               = lookup(each.value, "size", "Standard_B1s")
+  vm_size               = lookup(each.value, "size", "Standard_B2s")
 
   storage_image_reference {
     publisher = "Canonical"
