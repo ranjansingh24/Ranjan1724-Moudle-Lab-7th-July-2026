@@ -70,7 +70,11 @@ steps:
       $key = (az storage account keys list --account-name ranjansingh24 --resource-group Ranjan_24 --query "[0].value" -o tsv)
       $env:ARM_ACCESS_KEY      = $key
 
-      Write-Host "##[section]4. Running Terraform Apply"
+      Write-Host "##[section]1. Running Terraform Init"
+      terraform init -input=false -reconfigure -upgrade
+      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      Write-Host "##[section]2. Running Terraform Apply"
       terraform apply -auto-approve -input=false
       if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
